@@ -6,7 +6,12 @@
 
 //Code here
 
+const me = {
+    name: 'Jorge',
+    age: 30
+}
 
+console.log(me)
 
 //////////////////////////// PROBLEM 2 ////////////////////////////
 
@@ -17,6 +22,12 @@
 
 //Code here
 
+const dog = {
+  name: "Monkey",
+  color: "White with black spots",
+  age: 4,
+  goodGirl: true,
+}
 
 
 //////////////////////////// PROBLEM 3 ////////////////////////////
@@ -24,14 +35,14 @@
 
 //Code here
 
-
+console.log(dog.name)
 
 //////////////////////////// PROBLEM 4 ////////////////////////////
 /* Print out the color of the dog you created in problem 2 using bracket-notation. */
 
 //Code here
 
-
+console.log(dog.color)
 
 //////////////////////////// PROBLEM 5 ////////////////////////////
 /*
@@ -41,6 +52,14 @@
 
 //Code here
 
+const favoriteThings = {
+  band: 'Linkin Park',
+  food: 'Pastelitos',
+  person: 'Jenna',
+  book: 'A hitchhikers guide to the galaxy',
+  movie: 'Back to the Future',
+  holiday: 'Christmas'
+}
 
 /*
   After you've made your object, use bracket or dot notation to add another key named 'car' with the value being your favorite car and then another key named 'show' with the value being your favorite show.
@@ -48,6 +67,9 @@
 
 //Code here
 
+favoriteThings.car = 'Porsche 911';
+
+console.log(favoriteThings.car)
 
 /*
   Now use bracket or dot notation to change the value of the food key in your favoriteThings object to be 'Chicken Nuggets'
@@ -56,6 +78,9 @@
 
 //Code here
 
+favoriteThings.food = 'Pizza';
+
+console.log(favoriteThings.food)
 
 //////////////////////////// PROBLEM 6 ////////////////////////////
 
@@ -74,7 +99,9 @@ var carDetails = {
 
 //Code Here
 
+const {color, make, model, year} = carDetails
 
+console.log(color, make, model, year)
 
 //////////////////////////// PROBLEM 7 ////////////////////////////
 
@@ -86,12 +113,13 @@ var carDetails = {
 
 function greeting( obj ) {
   //Code Here
-  
+  const {firstName, lastName, title} = obj
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
 }
 
+console.log(greeting(obj = {firstName:'jorge', lastName: 'peraza', title: 'Mr'}))
 
 
 //////////////////////////// PROBLEM 8 ////////////////////////////
@@ -106,7 +134,21 @@ function greeting( obj ) {
 
 //Code Here
 
+const propertyValues = {
+  utah: 250000,
+  california: 850000,
+  texas: 500000,
+  arizona: 380000
+}
 
+function totalPopulation(obj){
+  const {utah, california, texas, arizona} = obj
+
+  const totalValue = utah + california + + texas + arizona
+  return totalValue
+}
+
+console.log(totalPopulation(propertyValues))
 
 //////////////////////////// PROBLEM 9 ////////////////////////////
 
@@ -120,7 +162,16 @@ function greeting( obj ) {
 
 //Code Here
 
+const meal = {carb: 'rice', fat: 'avocado', protein: 'steak'}
 
+function ingredients(obj){
+  const {carb, fat, protein} = obj
+  const foods = []
+  foods.push(carb, fat, protein)
+  return console.log(foods)
+}
+
+ingredients(meal)
 
 //////////////////////////// PROBLEM 10 ////////////////////////////
 // Do not edit the code below.
@@ -142,6 +193,10 @@ var user = {
 
 //Code Here
 
+user.name = 'Bryan G.'
+user.email = 'bryan.smith@devmounta.in'
+
+console.log(user)
 
 //////////////////////////// PROBLEM 11 ////////////////////////////
 /*
@@ -150,27 +205,64 @@ var user = {
 
 //Code Here
 
+console.log(user)
+delete user.age
+
+console.log(user)
 
 //////////////////////////// PROBLEM 12 ////////////////////////////
 /*
-  Create a class called 'Cat'. Make sure to call your constructor, and require these 3 parameters: name, age, color.
-  Outside of your class, create an instance of your cat, passing in whatever values you would like.
+  Create a class called 'Cat'. Make sure to call your constructor, and require these 3 
+  parameters: name, age, color.
+  Outside of your class, create an instance of your cat, passing in whatever values you 
+  would like.
   Print the name of your cat instance using dot notation.
 */
 
 //Code here
 
+class Cat {
+  constructor(name, age, color){
+    this.name = name
+    this.age = age
+    this.color = color
+  }
+}
 
+const cat1 = new Cat('Jinx', 4, 'black' )
+
+console.log(cat1) 
 
 //////////////////////////// PROBLEM 13 ////////////////////////////
 /*
-  Create a class called 'Wizard'. Make sure to call your constructor, and require these 3 parameters: name, age, favoriteSpell.
-  Add a function to your Wizard class called castSpell. This function should print "{name} has cast {favoriteSpell}"
-  Outside of your class, create an instance of your Wizard, passing in whatever values you would like.
+  Create a class called 'Wizard'. Make sure to call your constructor, and require these 
+  3 parameters: name, age, favoriteSpell.
+  Add a function to your Wizard class called castSpell. This function should print 
+  "{name} has cast {favoriteSpell}"
+  Outside of your class, create an instance of your Wizard, passing in whatever values 
+  you would like.
   Call the castSpell function on the instance of your wizard.
 */
 
 //Code here
+
+class Wizard {
+  constructor(nameStr, age, favoriteSpellStr) {
+    this.nameStr = nameStr
+    this.age = age
+    this.favoriteSpellStr = favoriteSpellStr
+    }
+    
+    castSpell(Wizard) {
+      console.log(`${this.nameStr} has cast ${this.favoriteSpellStr}`)
+    }
+}
+
+ const wizard1 = new Wizard('Harry', 25, 'Patronum')
+ console.log(wizard1)
+
+ wizard1.castSpell()
+
 
 //////////////////////////// PROBLEM 14 ////////////////////////////
 /*
