@@ -99,9 +99,9 @@ var carDetails = {
 
 //Code Here
 
-const {color, make, model, year} = carDetails
+// const {color, make, model, year} = carDetails
 
-console.log(color, make, model, year)
+// console.log(color, make, model, year)
 
 //////////////////////////// PROBLEM 7 ////////////////////////////
 
@@ -144,7 +144,7 @@ const propertyValues = {
 function totalPopulation(obj){
   const {utah, california, texas, arizona} = obj
 
-  const totalValue = utah + california + + texas + arizona
+  const totalValue = utah + california +  texas + arizona;
   return totalValue
 }
 
@@ -269,7 +269,8 @@ class Wizard {
     Write a class called Phone. We'll use it as if we were creating
     phone objects to keep track of inventory using an app.
 
-    Phone will build phone objects with brand, model, storage, color, price, and sold properties.
+    Phone will build phone objects with brand, model, storage, color, price, and sold 
+    properties.
 
     Write a constructor that sets those values -- all of the values 
     should come from the constructors parameters except sold, which
@@ -278,7 +279,8 @@ class Wizard {
     and it won't be sold yet. 
 
     Create a method called 'sell'.
-    sell should be a function that changes the value of sold to true and prints the string: '{brand} {model} has been sold.'
+    sell should be a function that changes the value of sold to true and prints the 
+    string: '{brand} {model} has been sold.'
     
     Create another method called 'changePrice'. We can use this 
     to change the price in case a phone isn't selling.
@@ -289,6 +291,27 @@ class Wizard {
 
 //Code Here
 
+class Phone {
+  constructor(brand, model, storage, color, price){
+  this.brand = brand;
+  this.model = model;
+  this.storage = storage;
+  this.color = color;
+  this.price = price;
+  this.sold = false;
+  }
+
+  sell(){
+    this.sold = true
+    return console.log(`${this.brand}, ${this.model} has been sold`)
+  }
+
+  changePrice(newPrice){
+    this.price = newPrice;
+    console.log(this.price)
+  }
+  
+}
   
 /*
     Next make three new phone instances using your class.
@@ -302,6 +325,12 @@ class Wizard {
 
 //Code Here
 
+let phone1 = new Phone('Apple','iPhone 14', 128, 'Space Grey', 1000)
+
+let phone2 = new Phone('Apple','iPhone 14 Pro', 128, 'Space Grey', 1500)
+
+let phone3 = new Phone('Apple','iPhone 14 Pro MAX', 128, 'Space Grey', 2000)
+
 /* 
   Call the changePrice function on one of your phones, 
   don't forget to pass in a new price 
@@ -310,6 +339,10 @@ class Wizard {
 */ 
 
 //Code Here 
+
+phone3.changePrice(1800)
+
+console.log(phone3.price)
 
 
 /*
@@ -320,13 +353,19 @@ class Wizard {
 
 //Code Here 
 
+phone1.sell()
+
+console.log(phone1.sold)
+
 
 //////////////////////////// PROBLEM 15 ////////////////////////////
 
 /*
   Use the spread operator to create a copy of the colors object below.
   Store the copy in a variable called colorsCopy.
-  Note: We did not cover the spread operator in class. We do not expect you to know how to use it. Challenge yourself by going online and researching what the spread operator is and how to use it.
+  Note: We did not cover the spread operator in class. We do not expect you to know how 
+  to use it. Challenge yourself by going online and researching what the spread operator
+  is and how to use it.
 */
 
 //do not edit this object
@@ -339,7 +378,9 @@ const colors = {
 
 //Code Here 
 
+const colorsCopy = {...colors}
 
+console.log(colorsCopy)
 
 /*
  Now use the spread operator to combine the following 2 objects into one. 
@@ -367,9 +408,11 @@ const shippingInfo = {
 
 //Code Here
 
+const helensInfo = {...contactInfo, ...shippingInfo}
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
 
+console.log(helensInfo)
 
 //////////////////////////// PROBLEM 16 ////////////////////////////
 
@@ -385,12 +428,28 @@ const shippingInfo = {
 
 //Code Here 
 
+class Vehicle {
+  constructor(capacity, color, mileage){
+    this.capacity = capacity;
+    this.color = color;
+    this.mileage = mileage;
+  }
+
+  move(miles){
+    this.miles = miles;
+    this.mileage = this.mileage + this.miles;
+    return console.log(this.mileage);
+  }
+}
+
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
+
+const myFirstVehicle = new Vehicle(2, 'black', 60000)
 
 
 /* 
@@ -403,20 +462,36 @@ const shippingInfo = {
 
 //Code Here
 
+class Motorcycle extends Vehicle {
+  constructor(capacity, color, mileage, make, isCool){
+    super(capacity, color, mileage);
+    this.make = make;
+    this.isCool = isCool;
+  }
+}
+
 /*
-  Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
+  Create a Motorcycle using your new class and save it to a variable called 
+  myFirstMotorcycle
 */
 
 //Code Here 
+
+const myFirstMotorcycle = new Motorcycle(2, 'white', 2000, 'Honda', true)
+
+console.log(myFirstMotorcycle)
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
 
+myFirstMotorcycle.move(100)
+
 /*
   Let's make another class based off of Vehicle. 
 
-  Write a class called Boat that *extends* the Vehicle class. The constructor should take in
+  Write a class called Boat that *extends* the Vehicle class. The constructor should 
+  take in
   all the same arguments as Vehicle plus 3 new ones: 
   name (boats gotta have cool names), type (ski boat, yacht, etc), and isSeaworthy.
 
@@ -431,6 +506,27 @@ const shippingInfo = {
 
 //Code Here
 
+class Boat extends Vehicle {
+  constructor(capacity, color, mileage, name, type, isSeaworthy){
+    super(capacity, color, mileage);
+    this.name = name;
+    this.type = type;
+    this.isSeaworthy = isSeaworthy;
+  }
+
+  checkSeaworthiness(){
+    if(this.isSeaworthy === true){
+      console.log(`The ${this.color} ${this.type} ${this.name} is seaworthy!`);
+    } else{
+      console.log(`You need to get your ${this.type} in shape!`);
+    }
+  }
+
+  performMaintenance(){
+    this.isSeaworthy = true
+  }
+}
+
 
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
@@ -439,11 +535,15 @@ const shippingInfo = {
 
 //Code Here
 
+const boat1 = new Boat(5, 'white', 1400, 'floaty boaty', 'ski boat', false)
+
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+
+boat1.checkSeaworthiness()
 
 /*
   Now run the performMaintenance method on your boat
@@ -451,8 +551,12 @@ const shippingInfo = {
 
 //Code Here 
 
+boat1.performMaintenance()
+
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+
+boat1.checkSeaworthiness()
